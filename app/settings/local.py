@@ -6,7 +6,7 @@ from app.settings.base import *
 ENVIRONMENT = 'development'
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases

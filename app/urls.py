@@ -26,11 +26,14 @@ from unit.api.views import UnitViewset
 from user.api.views import UserViewset
 from certificate.api.views import CertificateViewset
 from skill.api.views import SkillViewset
+from portfolio.api.views import PortfolioViewset
 
 # change admin page title
-admin.site.site_header = 'DumbWays Django Boilerplate'
+admin.site.site_header = 'DumbWays Alumni Api'
 
-swagger_view = get_swagger_view(title='DumbWays Django Boilerplate API')
+swagger_view = get_swagger_view(
+    title=admin.site.site_header
+)
 
 # router = routers.DefaultRouter()
 router = NoPutRouter()
@@ -40,11 +43,13 @@ router.register('unit', UnitViewset)
 router.register('user', UserViewset)
 router.register('certificate', CertificateViewset)
 router.register('skill', SkillViewset)
+router.register('portfolio', PortfolioViewset)
 
 urlpatterns = [
     path('', swagger_view),
     path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
+    path('accounts/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/authentication/', obtain_jwt_token),
     path('api/version/', views.version),
 ]

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'unit.apps.UnitConfig',
     'skill.apps.SkillConfig',
     'certificate.apps.CertificateConfig',
+    'portfolio.apps.PortfolioConfig',
 
     # custom modules
     'helpers.apps.HelpersConfig',
@@ -143,6 +144,16 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ),
 }
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'basic': {
+            'type': 'basic'
+        }
+    },
+}
+LOGIN_URL = 'rest_framework:login'
+LOGOUT_URL = 'rest_framework:logout'
 
 JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(12*30),
