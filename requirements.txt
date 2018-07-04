@@ -1,3 +1,4 @@
+django-import-export
 arrow==0.12.1
 certifi==2018.1.18
 chardet==3.0.4
