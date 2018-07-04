@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     # main modules
     'user.apps.UserConfig',
     'unit.apps.UnitConfig',
+    'skill.apps.SkillConfig',
+    'certificate.apps.CertificateConfig',
 
     # custom modules
     'helpers.apps.HelpersConfig',
