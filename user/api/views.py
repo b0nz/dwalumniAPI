@@ -1,4 +1,3 @@
-
 from django.contrib.auth.models import User
 from rest_framework import status
 from rest_framework.views import APIView
@@ -11,10 +10,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 import requests
 from rest_framework_jwt.settings import api_settings
 from rest_framework.pagination import LimitOffsetPagination
-from rest_framework.decorators import action
 
-from ..serializers import UserSerializer, ProfileSerializer
-from ..models import Profile
+from ..serializers import UserSerializer
 
 class UserViewset(ModelViewSet):
     permission_classes = (IsAuthenticated, )
@@ -27,11 +24,21 @@ class UserViewset(ModelViewSet):
         SearchFilter,
         OrderingFilter,
     )
-    filter_fields = ('username', 'email',)
+    filter_fields = ('username', 'email', 'company_id',)
     search_fields = ('username', 'email',)
     ordering_fields = ('__all__')
 
-    @detail_route(methods=['get'], permission_classes=[IsAuthenticated])
+    # @detail_route(methods=['get'], permission_classes=[IsAuthenticated])
+    # def companies(self, request, pk=None):
+    #     user = User.objects.get(pk=pk)
+    #     companies = user.companies_set.all()
+    #
+    #     serializer = CompaniesSerializer(companies, many=True)
+    #     return Response({
+    #         'count': user.companies_set.count(),
+    #         'results': serializer.data
+    #     }, status.HTTP_200_OK)
+
     def get_permissions(self):
         """
         Instantiates and returns the list of permissions that this view requires.
@@ -41,33 +48,3 @@ class UserViewset(ModelViewSet):
         else:
             permission_classes = [IsAuthenticated]
         return [permission() for permission in permission_classes]
-
-    @action(methods=['get'], permission_classes=[IsAuthenticated], detail=False)
-    def get_schema(self, request):
-        fields = User._meta.get_fields()
-        field_names = [f.name for f in fields
-            if not (f.is_relation)]
-
-        return Response(
-            field_names,
-            status=status.HTTP_200_OK
-        )
-
-    @detail_route(methods=['get', 'post', 'patch'], permission_classes=[IsAuthenticated])
-    def profile(self, request, pk=None):
-        try:
-            profile = Profile.objects.filter(user=pk)
-        except Profile.DoesNotExist:
-            return Response('not found')
-
-        if request.method == 'GET':
-            serializer = ProfileSerializer(profile, many=True)
-            return Response(serializer.data)
-
-        if request.method == 'POST':
-            serializer = ProfileSerializer(profile)
-            return Response(request.DATA)
-
-class ProfileViewset(ModelViewSet):
-    queryset = Profile.objects.all()
-    serializer_class = ProfileSerializer

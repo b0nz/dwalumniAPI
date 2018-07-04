@@ -23,7 +23,7 @@ from . import views
 
 # main modules
 from unit.api.views import UnitViewset
-from user.api.views import UserViewset, ProfileViewset
+from user.api.views import UserViewset
 
 # change admin page title
 admin.site.site_header = 'DumbWays Django Boilerplate'
@@ -36,7 +36,6 @@ router = NoPutRouter()
 # main routers
 router.register('unit', UnitViewset)
 router.register('user', UserViewset)
-router.register('profile', ProfileViewset)
 
 urlpatterns = [
     path('', swagger_view),
