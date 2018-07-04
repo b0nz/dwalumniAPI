@@ -7,7 +7,7 @@ from ..models import Certificate
 from ..serializers import CertificateSerializer
 
 
-class CertificateSerializerViewSet(viewsets.ModelViewSet):
+class CertificateViewset(viewsets.ModelViewSet):
     queryset = Certificate.objects.all()
     serializer_class = CertificateSerializer
     #filter_backends = (

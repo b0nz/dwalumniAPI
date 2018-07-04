@@ -24,8 +24,8 @@ from . import views
 # main modules
 from unit.api.views import UnitViewset
 from user.api.views import UserViewset
-from certificate.api.views import CertificateSerializerViewSet
-from skill.api.views import SkillSerializerViewSet
+from certificate.api.views import CertificateViewset
+from skill.api.views import SkillViewset
 
 # change admin page title
 admin.site.site_header = 'DumbWays Django Boilerplate'
@@ -38,8 +38,8 @@ router = NoPutRouter()
 # main routers
 router.register('unit', UnitViewset)
 router.register('user', UserViewset)
-router.register('certificate', CertificateSerializerViewSet)
-router.register('skill', SkillSerializerViewSet)
+router.register('certificate', CertificateViewset)
+router.register('skill', SkillViewset)
 
 urlpatterns = [
     path('', swagger_view),

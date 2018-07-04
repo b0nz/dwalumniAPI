@@ -14,9 +14,9 @@ DATABASES = {
     # central db (users, companies)
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dwalumni2',
+        'NAME': 'dwalumni',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': '123qweasd',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {

@@ -7,7 +7,7 @@ from ..models import Skill, UserSkill
 from ..serializers import SkillSerializer, UserSkillSerializer
 
 
-class SkillSerializerViewSet(viewsets.ModelViewSet):
+class SkillViewset(viewsets.ModelViewSet):
     queryset = Skill.objects.all()
     serializer_class = SkillSerializer
     filter_backends = (
@@ -22,7 +22,7 @@ class SkillSerializerViewSet(viewsets.ModelViewSet):
         serializer.save(created_by=request.user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-class UserSkillSerializerViewSet(viewsets.ModelViewSet):
+class UserSkillViewset(viewsets.ModelViewSet):
     queryset = UserSkill.objects.all()
     serializer_class = UserSkillSerializer
     filter_backends = (
