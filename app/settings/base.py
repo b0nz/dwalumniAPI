@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     #'detail_skill.apps.UserDetailSkillConfig',
     'detail_skill.apps.DetailSkillConfig',
     'education.apps.EducationConfig',
+    'video.apps.VideoConfig',
 
     # custom modules
     'helpers.apps.HelpersConfig',
