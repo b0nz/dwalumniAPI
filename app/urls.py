@@ -27,6 +27,7 @@ from user.api.views import UserViewset
 from certificate.api.views import CertificateViewset
 from skill.api.views import SkillViewset
 from portfolio.api.views import PortfolioViewset
+from detail_skill.api.views import DetailSkillViewset, UserDetailSkillViewset
 
 # change admin page title
 admin.site.site_header = 'DumbWays Alumni Api'
@@ -44,6 +45,8 @@ router.register('user', UserViewset)
 router.register('certificate', CertificateViewset)
 router.register('skill', SkillViewset)
 router.register('portfolio', PortfolioViewset)
+router.register('detail-skill', DetailSkillViewset)
+router.register('user-detail-skill', UserDetailSkillViewset)
 
 urlpatterns = [
     path('', swagger_view),

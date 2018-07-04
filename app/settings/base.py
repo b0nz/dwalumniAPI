@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'skill.apps.SkillConfig',
     'certificate.apps.CertificateConfig',
     'portfolio.apps.PortfolioConfig',
+    #'detail_skill.apps.UserDetailSkillConfig',
+    'detail_skill.apps.DetailSkillConfig',
 
     # custom modules
     'helpers.apps.HelpersConfig',
