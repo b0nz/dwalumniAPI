@@ -6,7 +6,7 @@ class Certificate(models.Model):
     class Meta:
         db_table = "certificate"
 
-    pic = models.CharField(max_length=255)
+    pic = models.CharField(max_length=255, default='no_image.jpg')
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE
@@ -18,7 +18,7 @@ class Certificate(models.Model):
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    created_by = models.ForeignKey(
+    created_by = models.OneToOneField(
         User,
         on_delete=models.SET_NULL,
         null=True,
