@@ -63,7 +63,9 @@ class UserEducation(models.Model):
     )
     major = models.ForeignKey(
         Major,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True
     )
     
     degree = models.CharField(max_length=2)
