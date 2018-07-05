@@ -25,6 +25,8 @@ from . import views
 from unit.api.views import UnitViewset
 from user.api.views import UserViewset
 from certificate.api.views import CertificateViewset
+from company.api.views import CompanyViewset
+from hiring_partner.api.views import HiringPartnerViewset
 from skill.api.views import SkillViewset
 from portfolio.api.views import PortfolioViewset
 from detail_skill.api.views import DetailSkillViewset, UserDetailSkillViewset
@@ -45,6 +47,8 @@ router = NoPutRouter()
 router.register('unit', UnitViewset)
 router.register('user', UserViewset)
 router.register('certificate', CertificateViewset)
+router.register('company', CompanyViewset)
+router.register('hiring_partner', HiringPartnerViewset)
 router.register('skill', SkillViewset)
 router.register('portfolio', PortfolioViewset)
 router.register('detail-skill', DetailSkillViewset)
