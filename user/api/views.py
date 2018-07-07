@@ -24,7 +24,7 @@ class UserViewset(ModelViewSet):
         SearchFilter,
         OrderingFilter,
     )
-    filter_fields = ('username', 'email', 'company_id',)
+    filter_fields = ('username', 'email',)
     search_fields = ('username', 'email',)
     ordering_fields = ('__all__')
 
