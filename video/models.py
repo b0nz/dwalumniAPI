@@ -8,10 +8,6 @@ class Video(models.Model):
 
     title = models.CharField(max_length=128)
     video_url = models.CharField(max_length=255)
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE
-    )
     skill = models.ForeignKey(
         Skill,
         on_delete=models.CASCADE
@@ -34,3 +30,6 @@ class Video(models.Model):
         blank=True,
         related_name='video_updated_by'
     )
+
+def __str__(self):
+    return self.title

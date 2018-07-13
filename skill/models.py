@@ -6,7 +6,7 @@ class Skill(models.Model):
         db_table = 'skill'
 
     name = models.CharField(max_length=50)
-    icon = models.CharField(max_length=128)
+    icon = models.CharField(max_length=128, default="no_icon.jpg")
 
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -25,6 +25,9 @@ class Skill(models.Model):
         blank=True,
         related_name='skill_updated_by'
     )
+
+def __str__(self):
+    return self.name
 
 class UserSkill(models.Model):
     class Meta:

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # main modules
     'user.apps.UserConfig',
     'unit.apps.UnitConfig',
+    'article.apps.ArticleConfig',
     'skill.apps.SkillConfig',
     'certificate.apps.CertificateConfig',
     'portfolio.apps.PortfolioConfig',

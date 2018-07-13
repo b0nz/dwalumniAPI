@@ -26,12 +26,15 @@ class Major(models.Model):
         related_name='major_updated_by'
     )
 
+def __str__(self):
+    return self.name
+
 class Education(models.Model):
     class Meta:
         db_table = "education"
 
     name = models.CharField(max_length=50)
-    logo = models.CharField(max_length=255)
+    logo = models.CharField(max_length=255, default='no_image.jpg')
 
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True, null=False)
@@ -50,6 +53,9 @@ class Education(models.Model):
         blank=True,
         related_name='education_updated_by'
     )
+
+def __str__(self):
+    return self.name
 
 class UserEducation(models.Model):
     class Meta:
@@ -71,10 +77,6 @@ class UserEducation(models.Model):
     degree = models.CharField(max_length=2)
     begining_year = models.IntegerField(('year'), choices=YEAR_CHOICES)
     end_year = models.IntegerField(('year'), choices=YEAR_CHOICES)
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE
-    )
 
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True, null=False)

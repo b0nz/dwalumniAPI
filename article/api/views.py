@@ -7,7 +7,7 @@ from ..models import Article
 from ..serializers import ArticleSerializer
 
 
-class ArticleSerializerViewSet(viewsets.ModelViewSet):
+class ArticleViewset(viewsets.ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
     filter_backends = (

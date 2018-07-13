@@ -13,7 +13,6 @@ class CompanySerializer(serializers.ModelSerializer):
             'id',
             'name',
             'address',
-            'user',
 
             # general fields
             'is_active',

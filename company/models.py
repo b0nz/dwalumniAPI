@@ -7,10 +7,6 @@ class Company(models.Model):
 
     name = models.CharField(max_length=50)
     address = models.CharField(max_length=255)
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE
-    )
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -28,3 +24,6 @@ class Company(models.Model):
         blank=True,
         related_name='company_updated_by'
     )
+
+def __str__(self):
+    return self.name

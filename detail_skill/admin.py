@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import DetailSkill, UserDetailSkill
 
-# Register your models here.
+admin.site.register(DetailSkill)
+admin.site.register(UserDetailSkill)

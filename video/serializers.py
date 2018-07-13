@@ -13,7 +13,6 @@ class VideoSerializer(serializers.ModelSerializer):
             'id',
             'title',
             'video_url',
-            'user',
             'skill',
             
             'is_active',

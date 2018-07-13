@@ -7,7 +7,7 @@ from user.serializers import UserSerializerSimple
 class ArticleSerializer(serializers.ModelSerializer):
     created_by = RecursiveField('user.serializers.UserSerializerSimple', read_only=True)
     updated_by = RecursiveField('user.serializers.UserSerializerSimple', read_only=True)
-    #user = UserSerializerSimple(many=True, read_only=True)
+
 
     class Meta:
         model = Article
@@ -15,8 +15,7 @@ class ArticleSerializer(serializers.ModelSerializer):
             'id',
             'title',
             'body',
-            'pic',
-            'user',
+            'picture',          
             'skill',
 
             # general fields

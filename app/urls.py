@@ -23,7 +23,8 @@ from . import views
 
 # main modules
 from unit.api.views import UnitViewset
-from user.api.views import UserViewset
+from user.api.views import UserViewset, ProfileViewset
+from article.api.views import ArticleViewset
 from certificate.api.views import CertificateViewset
 from company.api.views import CompanyViewset
 from hiring_partner.api.views import HiringPartnerViewset
@@ -46,11 +47,13 @@ router = NoPutRouter()
 # main routers
 router.register('unit', UnitViewset)
 router.register('user', UserViewset)
+router.register('article', ArticleViewset)
 router.register('certificate', CertificateViewset)
 router.register('company', CompanyViewset)
 router.register('hiring-partner', HiringPartnerViewset)
 router.register('skill', SkillViewset)
 router.register('portfolio', PortfolioViewset)
+router.register('profile', ProfileViewset)
 router.register('detail-skill', DetailSkillViewset)
 router.register('user-detail-skill', UserDetailSkillViewset)
 router.register('user-education', UserEducationViewset)

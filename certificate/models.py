@@ -6,11 +6,7 @@ class Certificate(models.Model):
     class Meta:
         db_table = "certificate"
 
-    pic = models.CharField(max_length=255, default='no_image.jpg')
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE
-    )
+    picture = models.CharField(max_length=255, default='no_image.jpg')
     skill = models.ForeignKey(
         Skill,
         on_delete=models.CASCADE

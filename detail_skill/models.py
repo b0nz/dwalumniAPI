@@ -29,6 +29,9 @@ class DetailSkill(models.Model):
         related_name='detail_skill_updated_by'
     )
 
+def __str__(self):
+    return self.name
+
 class UserDetailSkill(models.Model):
     class Meta:
         db_table = "detail_user_skill"

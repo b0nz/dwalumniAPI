@@ -16,7 +16,6 @@ class PortfolioSerializer(serializers.ModelSerializer):
             'title',
             'description',
             'github_url',
-            'user',
             'skill',
 
             # general fields

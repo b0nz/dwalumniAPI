@@ -11,8 +11,7 @@ class CertificateSerializer(serializers.ModelSerializer):
         model = Certificate
         fields = (
             'id',
-            'pic',
-            'user',
+            'picture',
             'skill',
 
             # general fields

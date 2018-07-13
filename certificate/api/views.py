@@ -21,3 +21,13 @@ class CertificateViewset(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save(created_by=request.user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+    def partial_update(self, request, pk=None, format='json'):
+        instance = self.queryset.get(pk=pk)
+        serializer = CertificateSerializer(instance, data=request.data, partial=True)
+        if serializer.is_valid():
+            certificate = serializer.save(updated_by=request.user)
+            if course:
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response({'error': serializer.errors}, status=status.HTTP_403_FORBIDDEN)

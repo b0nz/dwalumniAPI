@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from rest_framework import status
+from rest_framework import status, viewsets
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
@@ -11,7 +11,8 @@ import requests
 from rest_framework_jwt.settings import api_settings
 from rest_framework.pagination import LimitOffsetPagination
 
-from ..serializers import UserSerializer
+from ..models import Profile
+from ..serializers import UserSerializer, ProfileSerializer
 
 class UserViewset(ModelViewSet):
     permission_classes = (IsAuthenticated, )
@@ -28,17 +29,6 @@ class UserViewset(ModelViewSet):
     search_fields = ('username', 'email',)
     ordering_fields = ('__all__')
 
-    # @detail_route(methods=['get'], permission_classes=[IsAuthenticated])
-    # def companies(self, request, pk=None):
-    #     user = User.objects.get(pk=pk)
-    #     companies = user.companies_set.all()
-    #
-    #     serializer = CompaniesSerializer(companies, many=True)
-    #     return Response({
-    #         'count': user.companies_set.count(),
-    #         'results': serializer.data
-    #     }, status.HTTP_200_OK)
-
     def get_permissions(self):
         """
         Instantiates and returns the list of permissions that this view requires.
@@ -48,3 +38,16 @@ class UserViewset(ModelViewSet):
         else:
             permission_classes = [IsAuthenticated]
         return [permission() for permission in permission_classes]
+
+class ProfileViewset(viewsets.ModelViewSet):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+    filter_backends = (
+        SearchFilter,
+    )
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save(created_by=request.user)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)

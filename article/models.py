@@ -8,11 +8,7 @@ class Article(models.Model):
 
     title = models.CharField(max_length=128)
     body = models.TextField(blank=True, null=False)
-    pic = models.CharField(max_length=255)
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE
-    )
+    picture = models.CharField(max_length=255, default="no_image.jpg")
     skill = models.ForeignKey(
        Skill,
        on_delete=models.CASCADE
@@ -34,3 +30,6 @@ class Article(models.Model):
         blank=True,
         related_name='article_updated_by'
     )
+
+def __str__(self):
+    return self.title
